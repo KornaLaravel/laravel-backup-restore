@@ -5,6 +5,7 @@ declare(strict_types=1);
 namespace Wnx\LaravelBackupRestore\Tests;
 
 use Orchestra\Testbench\TestCase as Orchestra;
+use Spatie\DbDumper\Compressors\GzipCompressor;
 use Wnx\LaravelBackupRestore\LaravelBackupRestoreServiceProvider;
 
 class TestCase extends Orchestra
@@ -112,7 +113,7 @@ class TestCase extends Orchestra
                         'mysql',
                     ],
                 ],
-                'database_dump_compressor' => \Spatie\DbDumper\Compressors\GzipCompressor::class,
+                'database_dump_compressor' => GzipCompressor::class,
                 'database_dump_file_extension' => '',
 
                 'destination' => [
@@ -134,7 +135,7 @@ class TestCase extends Orchestra
 
         config()->set('backup.backup.source.databases', [$connection]);
         config()->set('backup.backup.database_dump_compressor', null);
-        config()->set('backup.backup.database_dump_compressor', \Spatie\DbDumper\Compressors\GzipCompressor::class);
+        config()->set('backup.backup.database_dump_compressor', GzipCompressor::class);
 
         // config()->set('backup.backup.password', null);
         // config()->set('backup.backup.encryption', 'default');

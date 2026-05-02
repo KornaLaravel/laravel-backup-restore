@@ -3,6 +3,9 @@
 declare(strict_types=1);
 
 use Wnx\LaravelBackupRestore\Databases\DbImporter;
+use Wnx\LaravelBackupRestore\Databases\MySql;
+use Wnx\LaravelBackupRestore\Databases\PostgreSql;
+use Wnx\LaravelBackupRestore\Databases\Sqlite;
 use Wnx\LaravelBackupRestore\DbImporterFactory;
 use Wnx\LaravelBackupRestore\Exceptions\CannotCreateDbImporter;
 
@@ -11,27 +14,27 @@ it('returns db importer instances for given database driver', function ($connect
 })->with([
     [
         'connectionName' => 'mysql',
-        'expected' => \Wnx\LaravelBackupRestore\Databases\MySql::class,
+        'expected' => MySql::class,
     ],
     [
         'connectionName' => 'mysql-restore',
-        'expected' => \Wnx\LaravelBackupRestore\Databases\MySql::class,
+        'expected' => MySql::class,
     ],
     [
         'connectionName' => 'sqlite',
-        'expected' => \Wnx\LaravelBackupRestore\Databases\Sqlite::class,
+        'expected' => Sqlite::class,
     ],
     [
         'connectionName' => 'sqlite-restore',
-        'expected' => \Wnx\LaravelBackupRestore\Databases\Sqlite::class,
+        'expected' => Sqlite::class,
     ],
     [
         'connectionName' => 'pgsql',
-        'expected' => \Wnx\LaravelBackupRestore\Databases\PostgreSql::class,
+        'expected' => PostgreSql::class,
     ],
     [
         'connectionName' => 'pgsql-restore',
-        'expected' => \Wnx\LaravelBackupRestore\Databases\PostgreSql::class,
+        'expected' => PostgreSql::class,
     ],
 ]);
 
